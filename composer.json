@@ -1,0 +1,32 @@
+{
+  "name": "rcm/vimeo-data",
+  "description": "Basic data layer for Vimeo API",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "Expressive",
+    "PSR7",
+    "reliv",
+    "rcm",
+    "vimeo"
+  ],
+  "homepage": "https://github.com/reliv/rcm-vimeo-data",
+  "authors": [
+    {
+      "name": "James Jervis",
+      "email": "jjervis@relivinc.com",
+      "homepage": "http://www.reliv.com/"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "vimeo/vimeo-api": "1.*"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "2.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rcm\\VimeoData\\": "src/"
+    }
+  }
+}
