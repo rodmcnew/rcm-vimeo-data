@@ -29,13 +29,14 @@ class ModuleConfig
                 ],
             ],
             'routes' => [
-                '/vimeo/video/download/:videoId' =>
-                [
-                    'path' => '/vimeo/video/download/:videoId',
+                'vimeo.video.{videoId}.download' => [
+                    'name' => 'vimeo.video.{videoId}.download',
+                    'path' => '/vimeo/video/{videoId}/download',// ?width=1920
                     'middleware' => Download::class,
+                    'options' => [],
                     'allowed_methods' => ['GET'],
                 ],
-            ]
+            ],
         ];
     }
 }

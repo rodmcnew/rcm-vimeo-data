@@ -26,16 +26,14 @@ class Download
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param string                 $key
-     * @param null                   $default
+     * @param array  $params
+     * @param string $key
+     * @param null   $default
      *
      * @return null|mixed
      */
-    protected function getParam(ServerRequestInterface $request, $key, $default = null)
+    protected function getParam(array $params, $key, $default = null)
     {
-        $params = $request->getQueryParams();
-
         if (array_key_exists($key, $params)) {
             return $params[$key];
         }
@@ -52,11 +50,13 @@ class Download
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $out = null)
     {
-        $route = $request->getAttribute('route');
+        $videoId = $request->getAttribute('videoId', null);
 
-        $videoId = $route->getArgument('videoId', null);
-
-        $width = (int)$this->getParam($request, 'width', 1920);
+        $width = (int)$this->getParam(
+            $request->getQueryParams(),
+            'width',
+            1920
+        );
 
         if (empty($videoId)) {
             return $response->withStatus(404);
