@@ -5,7 +5,6 @@ namespace Rcm\VimeoData\Middleware;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Rcm\VimeoData\Service\VimeoApi;
-use Zend\Expressive\Router\RouteResult;
 
 /**
  * @author James Jervis - https://github.com/jerv13
