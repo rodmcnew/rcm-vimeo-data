@@ -30,8 +30,8 @@ class VimeoApi
     public $vimeo;
 
     /**
-     * @param string      $apiClientId
-     * @param string      $apiClientSecret
+     * @param string $apiClientId
+     * @param string $apiClientSecret
      * @param string|null $apiClientAccessToken
      */
     public function __construct(
@@ -74,10 +74,10 @@ class VimeoApi
     }
 
     /**
-     * @param int $videoId
+     * @param $videoId
      * @param int $width
-     *
-     * @return string
+     * @return string|null
+     * @throws \Exception
      */
     public function getDownloadLink($videoId, $width = 1920)
     {
@@ -92,7 +92,7 @@ class VimeoApi
         $response = $this->getVideo($videoId);
 
         if ($this->hasError($response)) {
-            return null;
+            throw new \Exception('Response from Vimeo has error: ' . json_encode($response));
         }
 
         $body = $response['body'];
@@ -108,7 +108,7 @@ class VimeoApi
 
     /**
      * @param array $links
-     * @param int   $width
+     * @param int $width
      *
      * @return mixed|null
      * @throws \Exception
